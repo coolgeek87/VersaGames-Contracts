@@ -1,2 +1,2 @@
-# VersaGames-Contract
+# VersaGames-Contracts
 VersaGames Solidity Contracts
