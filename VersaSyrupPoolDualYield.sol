@@ -956,7 +956,7 @@ contract SmartChefInitializable is Ownable, ReentrancyGuard {
         }
 
         user.rewardDebt = user.amount.mul(accTokenPerShare).div(PRECISION_FACTOR);
-        user.rewardDebt2 = user.amount.mul(accToken2PerShare).div(PRECISION_FACTOR2);
+        user.reward2Debt = user.amount.mul(accToken2PerShare).div(PRECISION_FACTOR2);
 
         emit Deposit(msg.sender, _amount);
     }
@@ -987,7 +987,7 @@ contract SmartChefInitializable is Ownable, ReentrancyGuard {
         }
 
         user.rewardDebt = user.amount.mul(accTokenPerShare).div(PRECISION_FACTOR);
-        user.rewardDebt2 = user.amount.mul(accToken2PerShare).div(PRECISION_FACTOR2);
+        user.reward2Debt = user.amount.mul(accToken2PerShare).div(PRECISION_FACTOR2);
 
         emit Withdraw(msg.sender, _amount);
     }
@@ -1151,7 +1151,7 @@ contract SmartChefInitializable is Ownable, ReentrancyGuard {
         uint256 tokenReward = multiplier.mul(rewardPerBlock);
         accTokenPerShare = accTokenPerShare.add(tokenReward.mul(PRECISION_FACTOR).div(stakedTokenSupply));
         uint256 token2Reward = multiplier.mul(reward2PerBlock);
-        accToken2PerShare = accToken2PerShare.add(tokenReward.mul(PRECISION_FACTOR2).div(stakedTokenSupply));
+        accToken2PerShare = accToken2PerShare.add(token2Reward.mul(PRECISION_FACTOR2).div(stakedTokenSupply));
         lastRewardBlock = block.number;
     }
 
